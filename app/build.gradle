@@ -27,6 +27,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    android {
+        viewBinding {
+            enabled = true
+        }
+    }
+
 }
 
 dependencies {
@@ -43,5 +49,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-database:20.1.0'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
+
+    //Slider material intro
+    implementation 'com.heinrichreimersoftware:material-intro:2.0.0'
 
 }
