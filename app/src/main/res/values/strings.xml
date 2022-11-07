@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Organizze</string>
+    <string name="intro_login">Login</string>
+    <string name="register_criar_utilizador">Criar Utilizador</string>
 </resources>

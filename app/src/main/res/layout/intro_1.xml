@@ -11,11 +11,22 @@
         android:layout_height="250dp"/>
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Organize suas contas \n de onde estiver"
         android:textAlignment="center"
         android:textSize="18sp"
+        android:textColor="@color/black"
         android:textStyle="bold"
-        android:text="Organize suas contas de onde estiver"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_marginTop="12dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="simple facil de usar gratis"
+        android:textAlignment="center"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginTop="12dp" />
 
 </LinearLayout>

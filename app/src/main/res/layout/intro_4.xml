@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    >
 
     <ImageView
-        android:src="@drawable/tres"
+        android:src="@drawable/quatro"
         android:layout_width="300dp"
         android:layout_height="250dp"
         android:layout_marginTop="38dp"
         />
 
     <TextView
-        android:id="@+id/textView_intro3"
+        android:id="@+id/textView_intro4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:text="Numca mais esqueça de \n pagar uma conta" />
+        android:text="Tudo organizado, no  \n  telemovel ou computador" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Receber alertas qunaddo quiser."
+        android:text="Use no seu smartphone e acessando o \n  Organizze pelo Website"
         android:textColor="@android:color/darker_gray"
+        android:layout_margin="12dp"
         android:textAlignment="center"
         android:textSize="12sp"
-        android:layout_margin="12dp"
         />
 
 </LinearLayout>
