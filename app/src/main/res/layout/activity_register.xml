@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="40dp"
-    tools:context=".RegisterActivity">
+    tools:context=".activities.RegisterActivity">
 
     <TextView
         android:id="@+id/textView4"
@@ -29,12 +29,13 @@
         android:layout_marginTop="50dp"
         android:hint="Nome"
         android:inputType="textPersonName"
-        android:drawableLeft="@drawable/ic_name"
+        android:drawableStart="@drawable/ic_name"
         android:drawablePadding="8dp"
         app:layout_constraintBottom_toTopOf="@+id/editText_register_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        android:autofillHints="username" />
 
     <EditText
         android:id="@+id/editText_register_email"
@@ -48,7 +49,8 @@
         app:layout_constraintBottom_toTopOf="@+id/editText_register_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_register_nome" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_register_nome"
+        android:autofillHints="emailAddress" />
 
     <EditText
         android:id="@+id/editText_register_password"
@@ -62,7 +64,8 @@
         app:layout_constraintBottom_toTopOf="@+id/button_register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_register_email" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_register_email"
+        android:autofillHints="password" />
 
     <Button
         android:id="@+id/button_register"

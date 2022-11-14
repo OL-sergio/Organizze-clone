@@ -1,4 +1,4 @@
-package udemy.java.organizze;
+package udemy.java.organizze.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -81,10 +81,10 @@ public class RegisterActivity extends AppCompatActivity {
           @Override
           public void onComplete(@NonNull Task<AuthResult> task) {
               if (task.isSuccessful()) {
-                  Toast.makeText(RegisterActivity.this, "Sucesso ao criar utilizador!", Toast.LENGTH_SHORT).show();
+                 finish();
               } else {
 
-                  String exception = "";
+                  String exception;
                   try {
                       throw task.getException();
                   } catch (FirebaseAuthWeakPasswordException e){

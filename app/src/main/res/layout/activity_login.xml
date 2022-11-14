@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="40dp"
-    tools:context=".LoginActivity">
+    tools:context=".activities.LoginActivity">
 
 
     <TextView
@@ -30,12 +30,13 @@
         android:layout_marginTop="50dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:drawableLeft="@drawable/ic_email"
+        android:drawableStart="@drawable/ic_email"
         android:drawablePadding="8dp"
         app:layout_constraintBottom_toTopOf="@+id/editText_login_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        android:autofillHints="emailAddress" />
 
     <EditText
         android:id="@+id/editText_login_password"
@@ -44,12 +45,13 @@
         android:layout_marginTop="12dp"
         android:hint="Senha"
         android:inputType="textPassword"
-        android:drawableLeft="@drawable/ic_password"
+        android:drawableStart="@drawable/ic_password"
         android:drawablePadding="8dp"
         app:layout_constraintBottom_toTopOf="@+id/button_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_login_email" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_login_email"
+        android:autofillHints="password" />
 
     <Button
         android:id="@+id/button_login"
@@ -62,6 +64,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_login_password" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
