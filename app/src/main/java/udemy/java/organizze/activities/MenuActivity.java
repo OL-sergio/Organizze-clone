@@ -4,14 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 
 import udemy.java.organizze.R;
+import udemy.java.organizze.config.ConfigurationFirebase;
 
 public class MenuActivity extends IntroActivity {
 
-
+    private FirebaseAuth userAuthentication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,8 @@ public class MenuActivity extends IntroActivity {
 
         setButtonBackVisible(false);
         setButtonNextVisible(false);
+
+
 
         addSlide(new FragmentSlide.Builder()
                 .background(R.color.white)
@@ -85,11 +89,31 @@ public class MenuActivity extends IntroActivity {
          */
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        userLogged();
+    }
+
     public void btLogin (View view){
             startActivity( new Intent(this, LoginActivity.class));
     }
 
     public void btRegister (View view) {
         startActivity( new Intent(this, RegisterActivity.class));
+    }
+
+    public void userLogged() {
+
+        userAuthentication = ConfigurationFirebase.getUserAuthentication();
+
+        if (userAuthentication.getCurrentUser() != null){
+            goToMainActivity();
+        }
+    }
+
+    private void goToMainActivity() {
+        startActivity( new Intent(this, MainActivity.class));
+        finish();
     }
 }
