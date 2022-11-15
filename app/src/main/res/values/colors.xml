@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--Color Expense!-->
+    <color name="colorPrimaryExpense">#FF706A</color>
+    <color name="colorPrimaryDarkExpense">#E66560</color>
+    <color name="colorAccentExpense">#FF706A</color>
+
+    <!--color Received!-->
+    <color name="colorPrimaryReceived">#00D39E</color>
+    <color name="colorPrimaryDarkReceived">#00BE8B</color>
+    <color name="colorAccentReceived">#00D39E</color>
+
 </resources>
