@@ -14,17 +14,29 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="expenseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:colorPrimary">@color/colorPrimaryExpense</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDarkExpense</item>
+        <item name="android:colorAccent">@color/colorAccentExpense</item>
+    </style>
+
+    <style name="receivedTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:colorPrimary">@color/colorPrimaryReceived</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDarkReceived</item>
+        <item name="android:colorAccent">@color/colorAccentReceived</item>
+    </style>
+
     <style name="Theme.Organizze.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Organizze.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar">
-    </style>
-
-
-
-    <style name="Theme.Organizze.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
-    </style>
+    <style name="Theme.Organizze.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar"/>
+    
+    <style name="Theme.Organizze.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
 </resources>
