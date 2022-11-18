@@ -1,5 +1,6 @@
 package udemy.java.organizze.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.github.clans.fab.FloatingActionButton;
@@ -41,19 +42,17 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        binding.fabMenuExpense.setOnClickListener(new View.OnClickListener() {
+        addExpenses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity( new Intent(MainActivity.this, ExpenseActivity.class));
             }
         });
 
-        binding.fabMenuReceived.setOnClickListener(new View.OnClickListener() {
+        addReceived.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity( new Intent(MainActivity.this, ReceivedActivity.class));
             }
         });
     }
