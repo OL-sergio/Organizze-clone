@@ -58,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
                         if (!textPassword.isEmpty()){
 
                             user = new User();
-                            user.setNome(textName);
+                            user.setName(textName);
                             user.setEmail(textEmail);
                             user.setPassword(textPassword);
                             createUser();

@@ -11,6 +11,9 @@ public class User {
     private String name;
     private String email;
     private String password;
+    private Double revenueTotal = 0.00;
+    private Double expenseTotal = 0.00;
+
 
     public User() {
     }
@@ -22,16 +25,33 @@ public class User {
                 .setValue(this);
     }
 
+
+    public Double getRevenueTotal() {
+        return revenueTotal;
+    }
+
+    public void setRevenueTotal(Double revenueTotal) {
+        this.revenueTotal = revenueTotal;
+    }
+
+    public Double getExpenseTotal() {
+        return expenseTotal;
+    }
+
+    public void setExpenseTotal(Double expenseTotal) {
+        this.expenseTotal = expenseTotal;
+    }
+
     @Exclude
     public String getIdUser() { return idUser; }
 
     public void setIdUser(String idUser) { this.idUser = idUser; }
 
-    public String getNome() {
+    public String getName() {
         return name;
     }
 
-    public void setNome(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
