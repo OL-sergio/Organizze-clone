@@ -1,13 +1,13 @@
 package udemy.java.organizze.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 import udemy.java.organizze.config.ConfigurationFirebase;
 import udemy.java.organizze.databinding.ActivityRegisterBinding;
+import udemy.java.organizze.helper.Base64Custom;
 import udemy.java.organizze.model.User;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -81,6 +82,9 @@ public class RegisterActivity extends AppCompatActivity {
           @Override
           public void onComplete(@NonNull Task<AuthResult> task) {
               if (task.isSuccessful()) {
+                  String idUser = Base64Custom.encryptionBase64(user.getEmail());
+                  user.setIdUser( idUser);
+                  user.save();
                  finish();
               } else {
 

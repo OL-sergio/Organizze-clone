@@ -134,16 +134,14 @@ public class MenuActivity extends IntroActivity {
     public void userLogged() {
 
         userAuthentication = ConfigurationFirebase.getUserAuthentication();
-
+        //userAuthentication.signOut();
         if (userAuthentication.getCurrentUser() != null){
-
             goToMainActivity();
         }
     }
 
     private void goToMainActivity() {
         startActivity( new Intent(this, MainActivity.class));
-        //userAuthentication.signOut();
         finish();
     }
 }

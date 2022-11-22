@@ -27,45 +27,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:hint="Nome"
-        android:inputType="textPersonName"
+        android:autofillHints="username"
         android:drawableStart="@drawable/ic_name"
         android:drawablePadding="8dp"
+        android:hint="Nome"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/editText_register_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        android:autofillHints="username" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
         android:id="@+id/editText_register_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
+        android:autofillHints="emailAddress"
         android:drawableStart="@drawable/ic_email"
         android:drawablePadding="8dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/editText_register_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_register_nome"
-        android:autofillHints="emailAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_register_nome" />
 
     <EditText
         android:id="@+id/editText_register_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:hint="Senha"
-        android:inputType="textPassword"
+        android:autofillHints="password"
         android:drawableStart="@drawable/ic_password"
         android:drawablePadding="8dp"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/button_register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_register_email"
-        android:autofillHints="password" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_register_email" />
 
     <Button
         android:id="@+id/button_register"

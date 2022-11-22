@@ -1,19 +1,38 @@
 package udemy.java.organizze.model;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
+
+import udemy.java.organizze.config.ConfigurationFirebase;
+
 public class User {
-    private  String nome;
-    private  String email;
-    private  String password;
+
+    private String idUser;
+    private String name;
+    private String email;
+    private String password;
 
     public User() {
     }
 
-    public String getNome() {
-        return nome;
+    public void save(){
+        DatabaseReference firebase = ConfigurationFirebase.getDatabaseReference();
+        firebase.child("users")
+                .child(this.idUser)
+                .setValue(this);
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    @Exclude
+    public String getIdUser() { return idUser; }
+
+    public void setIdUser(String idUser) { this.idUser = idUser; }
+
+    public String getNome() {
+        return name;
+    }
+
+    public void setNome(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -24,6 +43,8 @@ public class User {
         this.email = email;
     }
 
+
+    @Exclude
     public String getPassword() {
         return password;
     }

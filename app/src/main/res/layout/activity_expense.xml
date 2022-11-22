@@ -35,9 +35,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
         android:paddingTop="50dp"
-        android:paddingRight="26dp"
+        android:paddingEnd="26dp"
         android:paddingBottom="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,9 +53,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
-                android:backgroundTint="@color/white"
                 android:hint="Ex: 19/10/2019"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,7 +69,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
-                android:backgroundTint="@color/white"
                 android:hint="Ex: salário"
                 android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -77,14 +76,15 @@
         <com.google.android.material.textfield.TextInputLayout
             android:paddingTop="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:counterOverflowTextAppearance="@style/expenseTheme"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_expenseDescription"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
-                android:backgroundTint="@color/white"
                 android:hint="Ex: salário mensal"
                 android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -95,13 +95,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:src="@drawable/ic_done"
-        android:clickable="true"
         android:backgroundTint="@color/colorAccentExpense"
+        android:clickable="true"
+        android:contentDescription="@string/app_name"
+        android:focusable="true"
+        android:src="@drawable/ic_done"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:focusable="true"
         tools:ignore="ContentDescription" />
 
 
