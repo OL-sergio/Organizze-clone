@@ -22,7 +22,7 @@
             android:textAlignment="textEnd"
             android:paddingTop="50dp"
             android:paddingEnd="22dp"
-            android:text="€ 00.00"
+            android:hint="€ 00.00"
             android:textColor="@color/white"
             android:background="@android:color/transparent"
             android:inputType="numberDecimal"
@@ -69,24 +69,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
-                android:hint="Ex: salário"
-                android:inputType="numberDecimal" />
+                android:hint="Ex: carro"
+                android:inputType="textAutoCorrect" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:paddingTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:counterOverflowTextAppearance="@style/expenseTheme"
-            >
+            app:counterOverflowTextAppearance="@style/expenseTheme">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_expenseDescription"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
-                android:hint="Ex: salário mensal"
-                android:inputType="numberDecimal" />
+                android:hint="Ex: Deposito de gasóleo"
+                android:inputType="textAutoCorrect" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 

@@ -13,4 +13,14 @@ public class DateCustom {
         return dateString;
     }
 
+    public static String selectedDate(String date){
+        String dateRetrieved[] = date.split("/");
+        String day = dateRetrieved[0];
+        String month = dateRetrieved[1];
+        String year = dateRetrieved[2];
+
+        String monthYear = month + year;
+
+        return monthYear;
+    }
 }
