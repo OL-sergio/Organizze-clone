@@ -68,7 +68,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
                 android:hint="Ex: salário"
-                android:inputType="numberDecimal" />
+                android:inputType="textAutoCorrect" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -82,7 +82,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
                 android:hint="Ex: salário mensal"
-                android:inputType="numberDecimal" />
+                android:inputType="textAutoCorrect" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
