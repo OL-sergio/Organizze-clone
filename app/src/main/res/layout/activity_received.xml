@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/textView_expense"
+            android:id="@+id/editText_received"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
@@ -53,7 +53,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
                 android:hint="Ex: 19/10/2019"
-                android:inputType="numberDecimal" />
+                android:inputType="datetime" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
