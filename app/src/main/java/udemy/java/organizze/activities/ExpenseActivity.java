@@ -27,12 +27,14 @@ public class ExpenseActivity extends AppCompatActivity {
 
     private ActivityExpenseBinding binding;
 
+    private DatabaseReference firebaseRef = ConfigurationFirebase.getDatabaseReference();
+    private FirebaseAuth userAuthentication = ConfigurationFirebase.getUserAuthentication();
+
     private TextInputEditText valueDate, valueCategory, valueDescription;
     private EditText imputeValue;
     private FloatingActionButton fabExpense;
     private Movements movements;
-    private DatabaseReference firebaseRef = ConfigurationFirebase.getDatabaseReference();
-    private FirebaseAuth userAuthentication = ConfigurationFirebase.getUserAuthentication();
+
     private Double totalExpense;
     private Double retrievedValue;
 
@@ -132,7 +134,6 @@ public class ExpenseActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     private void updatedExpense(Double updatedExpense){
@@ -143,5 +144,4 @@ public class ExpenseActivity extends AppCompatActivity {
         userRef.child("expenseTotal").setValue(updatedExpense);
 
     }
-
 }
