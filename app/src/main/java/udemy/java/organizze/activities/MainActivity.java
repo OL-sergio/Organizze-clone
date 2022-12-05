@@ -2,18 +2,15 @@ package udemy.java.organizze.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.github.clans.fab.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.github.clans.fab.FloatingActionButton;
 
 import udemy.java.organizze.R;
 import udemy.java.organizze.databinding.ActivityMainBinding;
@@ -52,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         addReceived.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity( new Intent(MainActivity.this, ReceivedActivity.class));
+                startActivity( new Intent(MainActivity.this, RevenueActivity.class));
             }
         });
     }

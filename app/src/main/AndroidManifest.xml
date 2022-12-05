@@ -21,7 +21,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.ReceivedActivity"
+            android:name=".activities.RevenueActivity"
             android:theme="@style/receivedTheme"
             android:exported="false">
             <meta-data

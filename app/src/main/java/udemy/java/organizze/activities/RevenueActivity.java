@@ -17,15 +17,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import udemy.java.organizze.config.ConfigurationFirebase;
-import udemy.java.organizze.databinding.ActivityReceivedBinding;
+import udemy.java.organizze.databinding.ActivityRevenueBinding;
 import udemy.java.organizze.helper.Base64Custom;
 import udemy.java.organizze.helper.DateCustom;
 import udemy.java.organizze.model.Movements;
 import udemy.java.organizze.model.User;
 
-public class ReceivedActivity extends AppCompatActivity {
+public class RevenueActivity extends AppCompatActivity {
 
-    private ActivityReceivedBinding binding;
+    private ActivityRevenueBinding binding;
 
     private DatabaseReference firebaseRef = ConfigurationFirebase.getDatabaseReference();
     private FirebaseAuth userAuthentication = ConfigurationFirebase.getUserAuthentication();
@@ -42,7 +42,7 @@ public class ReceivedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityReceivedBinding.inflate(getLayoutInflater());
+        binding = ActivityRevenueBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         imputeValue = binding.editTextReceived;
@@ -58,7 +58,7 @@ public class ReceivedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveRevenue();
-                finish();
+
             }
         });
 
@@ -82,6 +82,7 @@ public class ReceivedActivity extends AppCompatActivity {
             updateRevenue(updateRevenue);
             movements.save(date);
 
+            finish();
         }
     }
 

@@ -59,4 +59,7 @@ dependencies {
 
     //FloatingActionButton
     implementation 'com.github.clans:fab:1.6.4'
+
+    //CalenderView Material
+    implementation 'com.prolificinteractive:material-calendarview:1.4.3'
 }
