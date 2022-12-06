@@ -25,10 +25,13 @@ import udemy.java.organizze.model.User;
 public class RegisterActivity extends AppCompatActivity {
 
     private ActivityRegisterBinding binding;
+
+    private FirebaseAuth userAuthentication;
+
+    private User user;
+
     private EditText createName, createEmail, createPassword;
     private Button registerUser;
-    private FirebaseAuth userAuthentication;
-    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,8 @@ public class RegisterActivity extends AppCompatActivity {
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        getSupportActionBar().setTitle("Register");
 
         createName =   binding.editTextRegisterNome;
         createEmail = binding.editTextRegisterEmail;

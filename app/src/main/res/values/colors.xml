@@ -18,4 +18,6 @@
     <color name="colorPrimaryDarkReceived">#00BE8B</color>
     <color name="colorAccentReceived">#00D39E</color>
 
+    <color name="green">#0F9D58</color>
+
 </resources>
