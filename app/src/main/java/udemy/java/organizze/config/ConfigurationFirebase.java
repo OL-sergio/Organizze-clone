@@ -26,4 +26,7 @@ public class ConfigurationFirebase {
         return userAuthentication;
 
     }
+
+
+
 }
