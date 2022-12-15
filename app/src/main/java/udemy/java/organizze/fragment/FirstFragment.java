@@ -34,6 +34,8 @@ public class FirstFragment extends Fragment {
     private final DatabaseReference firebaseRef = ConfigurationFirebase.getDatabaseReference();
     private final FirebaseAuth userAuthentication = ConfigurationFirebase.getUserAuthentication();
 
+    private ValueEventListener valueEventListenerUser;
+
     private MaterialCalendarView calendarRevenue;
 
     private TextView valueUserName, valueBalance;
@@ -55,11 +57,9 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         valueUserName = binding.textViewRevenueUserName;
         valueBalance = binding.textViewRevenueBalance;
         calendarRevenue = binding.calendarViewRevenueCalender;
-
 
     }
 
@@ -75,7 +75,8 @@ public class FirstFragment extends Fragment {
         String idUser = Base64Custom.encryptionBase64(userEmail);
         DatabaseReference userRef = firebaseRef.child("users").child(idUser);
 
-        userRef.addValueEventListener(new ValueEventListener() {
+        Log.i("onStop", "event was added");
+         valueEventListenerUser = userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -89,7 +90,7 @@ public class FirstFragment extends Fragment {
                 DecimalFormat decimalFormat = new DecimalFormat("0.##");
                 String resultFormat = decimalFormat.format(userBalance);
 
-                valueUserName.setText("Olá " + user.getName());
+                valueUserName.setText("Olá, " + user.getName());
                 valueBalance.setText( resultFormat + " €");
             }
 
@@ -98,7 +99,6 @@ public class FirstFragment extends Fragment {
 
             }
         });
-
     }
 
     private void configCalendarRevenue() {
@@ -111,6 +111,13 @@ public class FirstFragment extends Fragment {
                 Log.i("date","valor: " + (date.getMonth() + 1 )  + "/" + date.getYear() );
             }
         });
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        firebaseRef.removeEventListener(valueEventListenerUser);
+        Log.i("onStop", "event was removed");
     }
 
     @Override
