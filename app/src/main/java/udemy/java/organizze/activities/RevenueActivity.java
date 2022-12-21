@@ -68,11 +68,11 @@ public class RevenueActivity extends AppCompatActivity {
 
         if ( confirmationValuesRevenue() ) {
 
+            movements = new Movements();
             String date = valueDate.getText().toString();
             retrievedValue = Double.parseDouble(imputeValue.getText().toString());
 
-            movements = new Movements();
-            movements.setValue(retrievedValue);
+            movements.setTransference(retrievedValue);
             movements.setCategory(valueCategory.getText().toString());
             movements.setDescription(valueDescription.getText().toString());
             movements.setData(valueDate.getText().toString());
@@ -125,9 +125,7 @@ public class RevenueActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-                if (user != null) {
                     totalRevenue = user.getRevenueTotal();
-                }
             }
 
             @Override

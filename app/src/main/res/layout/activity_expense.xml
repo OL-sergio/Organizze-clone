@@ -69,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
-                android:hint="Ex: salário"
+                android:hint="Ex: carro"
                 android:inputType="textAutoCorrect" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,7 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
-                android:hint="Ex: salário mensal"
+                android:hint="Ex: abastecimento do carro"
                 android:inputType="textAutoCorrect" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>

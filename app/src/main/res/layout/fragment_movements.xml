@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.FirstFragment">
+    tools:context=".fragment.MovementsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,8 +42,10 @@
             android:textAlignment="center"
             android:textColor="@color/white" />
 
-    </LinearLayout>
 
+
+
+    </LinearLayout>
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/calendarView_revenueCalender"
         android:layout_width="match_parent"
@@ -53,8 +55,7 @@
         app:mcv_tileSize="60dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_revenue"
+        android:id="@+id/recyclerView_movementsBalance"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+        android:layout_height="match_parent" />
 </LinearLayout>

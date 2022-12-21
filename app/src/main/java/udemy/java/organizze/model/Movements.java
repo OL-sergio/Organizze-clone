@@ -8,24 +8,26 @@ import udemy.java.organizze.helper.Base64Custom;
 import udemy.java.organizze.helper.DateCustom;
 
 public class Movements {
+
+
+
     private String data;
     private String category;
     private String description;
     private String type;
-    private double value;
+    private double transference;
 
     public Movements() {
     }
 
-    public void  save(String date) {
+    public void save(String date) {
 
         FirebaseAuth userAuthentication = ConfigurationFirebase.getUserAuthentication();
         DatabaseReference firebase = ConfigurationFirebase.getDatabaseReference();
-
         String idUser = Base64Custom.encryptionBase64(userAuthentication.getCurrentUser().getEmail());
         String monthYear = DateCustom.selectedDate(date);
 
-        firebase.child("movements")
+      firebase.child("movements")
                 .child(idUser)
                 .child(monthYear)
                 .push()
@@ -56,19 +58,15 @@ public class Movements {
         this.description = description;
     }
 
-    public String getType() {
-        return type;
-    }
+    public String getType() {return type;}
 
     public void setType(String type) {
         this.type = type;
     }
 
-    public double getValue() {
-        return value;
-    }
+    public double getTransference() {return transference; }
 
-    public void setValue(double value) {
-        this.value = value;
+    public void setTransference(double transference) {
+        this.transference = transference;
     }
 }

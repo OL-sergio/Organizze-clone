@@ -69,11 +69,11 @@ public class ExpenseActivity extends AppCompatActivity {
 
         if ( confirmationValuesExpenses() ) {
 
+            movements = new Movements();
             String date = valueDate.getText().toString();
             retrievedValue = Double.parseDouble(imputeValue.getText().toString());
 
-            movements = new Movements();
-            movements.setValue( retrievedValue );
+            movements.setTransference( retrievedValue );
             movements.setCategory(valueCategory.getText().toString() );
             movements.setDescription(valueDescription.getText().toString() );
             movements.setData(valueDate.getText().toString());
@@ -127,9 +127,8 @@ public class ExpenseActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-                if (user != null) {
                     totalExpense = user.getExpenseTotal();
-                }
+
             }
 
             @Override

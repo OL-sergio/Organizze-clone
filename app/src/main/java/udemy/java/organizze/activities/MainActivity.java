@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
 
-
         addExpenses = binding.fabMenuExpense;
         addReceived = binding.fabMenuReceived;
 

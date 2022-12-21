@@ -19,5 +19,7 @@
     <color name="colorAccentReceived">#00D39E</color>
 
     <color name="green">#0F9D58</color>
+    <color name="red">#EA0606</color>
+
 
 </resources>
