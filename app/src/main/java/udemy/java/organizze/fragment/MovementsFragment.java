@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -79,6 +80,7 @@ public class MovementsFragment extends Fragment {
 
         recyclerViewMovements = binding.recyclerViewMovementsBalance;
         configCalendarView();
+        swipe();
 
         //setting adapter
         adapterListMovements = new AdapterMovements(listMovements, getContext());
@@ -90,6 +92,7 @@ public class MovementsFragment extends Fragment {
         recyclerViewMovements.addItemDecoration( new DividerItemDecoration(requireContext(), LinearLayout.VERTICAL ));
         recyclerViewMovements.setAdapter(adapterListMovements);
 
+
     }
 
     @Override
@@ -97,6 +100,34 @@ public class MovementsFragment extends Fragment {
         super.onStart();
         retrieveBalance();
         getMovements();
+    }
+
+    public void swipe() {
+
+        ItemTouchHelper.Callback itemTouch = new ItemTouchHelper.Callback() {
+            @Override
+            public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
+
+                int dragFlags = ItemTouchHelper.ACTION_STATE_IDLE;
+                int swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
+
+                return makeMovementFlags(dragFlags, swipeFlags);
+
+            }
+
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                Log.d("swipe","Item foi arrastado");
+            }
+        };
+
+        new ItemTouchHelper( itemTouch).attachToRecyclerView(recyclerViewMovements);
+
     }
 
     public void getMovements() {
