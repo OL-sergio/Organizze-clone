@@ -1,6 +1,7 @@
 package udemy.java.organizze.fragment;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -52,6 +55,7 @@ public class MovementsFragment extends Fragment {
     private String monthYearSelected;
     private AdapterMovements adapterListMovements;
     private RecyclerView recyclerViewMovements;
+    private Movements movements;
 
     private TextView valueUserName, valueBalance;
 
@@ -80,26 +84,8 @@ public class MovementsFragment extends Fragment {
 
         recyclerViewMovements = binding.recyclerViewMovementsBalance;
         configCalendarView();
-        swipe();
-
-        //setting adapter
-        adapterListMovements = new AdapterMovements(listMovements, getContext());
-
-        //setting recyclerView
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext());
-        recyclerViewMovements.setLayoutManager(layoutManager);
-        recyclerViewMovements.setHasFixedSize(true);
-        recyclerViewMovements.addItemDecoration( new DividerItemDecoration(requireContext(), LinearLayout.VERTICAL ));
-        recyclerViewMovements.setAdapter(adapterListMovements);
 
 
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        retrieveBalance();
-        getMovements();
     }
 
     public void swipe() {
@@ -122,7 +108,8 @@ public class MovementsFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                Log.d("swipe","Item foi arrastado");
+                deleteMovements( viewHolder );
+                //Log.d("swipe","Item foi arrastado");
             }
         };
 
@@ -130,7 +117,57 @@ public class MovementsFragment extends Fragment {
 
     }
 
+    private void deleteMovements(RecyclerView.ViewHolder viewHolder) {
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this.getContext() );
+
+        alertDialog.setTitle("Excluir movimentações da conta");
+        alertDialog.setMessage("Tem a certeza que deseja realmente excluir esta movimentação da conta? ");
+        alertDialog.setCancelable(false);
+
+        alertDialog.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                int position  = viewHolder.getAdapterPosition();
+                movements = listMovements.get(position);
+
+                String userEmail = userAuthentication.getCurrentUser().getEmail();
+                String idUser = Base64Custom.encryptionBase64(userEmail);
+
+                movementsRef = firebaseRef.child("movements")
+                        .child(idUser)
+                        .child(monthYearSelected);
+
+                movementsRef.child( movements.getKey() ).removeValue();
+                adapterListMovements.notifyItemRemoved(position);
+            }
+        });
+        alertDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getActivity(), "Cancelado", Toast.LENGTH_SHORT).show();
+                adapterListMovements.notifyDataSetChanged();
+            }
+        });
+
+        AlertDialog alert = alertDialog.create();
+        alert.show();
+
+    }
+
+
     public void getMovements() {
+
+        //setting adapter
+        adapterListMovements = new AdapterMovements(listMovements, getContext());
+
+        //setting recyclerView
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext());
+        recyclerViewMovements.setLayoutManager(layoutManager);
+        recyclerViewMovements.setHasFixedSize(true);
+        recyclerViewMovements.addItemDecoration( new DividerItemDecoration(requireContext(), LinearLayout.VERTICAL ));
+        recyclerViewMovements.setAdapter(adapterListMovements);
+
 
         String userEmail = userAuthentication.getCurrentUser().getEmail();
         String idUser = Base64Custom.encryptionBase64(userEmail);
@@ -140,6 +177,7 @@ public class MovementsFragment extends Fragment {
                 .child(monthYearSelected);
 
         listMovements.clear();
+        adapterListMovements.notifyDataSetChanged();
 
         valueEventListenerMovements = movementsRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -148,7 +186,9 @@ public class MovementsFragment extends Fragment {
                 for (DataSnapshot data: dataSnapshot.getChildren()){
 
                     Movements movements = data.getValue(Movements.class);
+                    movements.setKey( data.getKey() );
                     listMovements.add(movements);
+
                 }
                 adapterListMovements.notifyDataSetChanged();
             }
@@ -204,17 +244,29 @@ public class MovementsFragment extends Fragment {
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
                 String mothSelected = String.format("%02d", ( date.getMonth() + 1 ));
                 monthYearSelected =  String.valueOf(mothSelected + "" + date.getYear());
-               //movementsRef.removeEventListener(valueEventListenerMovements);
-               getMovements();
+                movementsRef.removeEventListener(valueEventListenerMovements);
+                getMovements();
                //Log.i("Mes","valor: " + monthYearSelected );
             }
         });
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        retrieveBalance();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getMovements();
+        swipe();
+    }
+
+    @Override
     public void onStop() {
         super.onStop();
-
         userRef.removeEventListener(valueEventListenerUser);
         movementsRef.removeEventListener(valueEventListenerMovements);
         Log.i("onStop", "event was removed");

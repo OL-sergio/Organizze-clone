@@ -16,6 +16,7 @@ public class Movements {
     private String description;
     private String type;
     private double transference;
+    private String key;
 
     public Movements() {
     }
@@ -33,6 +34,10 @@ public class Movements {
                 .push()
                 .setValue(this);
     }
+
+    public String getKey() { return key; }
+
+    public void setKey(String key) { this.key = key; }
 
     public String getData() {
         return data;
