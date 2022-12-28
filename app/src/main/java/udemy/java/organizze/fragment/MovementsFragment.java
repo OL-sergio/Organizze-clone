@@ -1,9 +1,9 @@
 package udemy.java.organizze.fragment;
 
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -57,7 +56,8 @@ public class MovementsFragment extends Fragment {
     private RecyclerView recyclerViewMovements;
     private Movements movements;
 
-    private TextView valueUserName, valueBalance;
+    private TextView valueUserName;
+    private TextView valueBalance;
 
     private Double totalExpense = 0.0;
     private Double totalRevenue = 0.0;
@@ -84,6 +84,17 @@ public class MovementsFragment extends Fragment {
 
         recyclerViewMovements = binding.recyclerViewMovementsBalance;
         configCalendarView();
+        swipe();
+
+        //setting adapter
+        adapterListMovements = new AdapterMovements(listMovements, getContext());
+
+        //setting recyclerView
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext());
+        recyclerViewMovements.setLayoutManager(layoutManager);
+        recyclerViewMovements.setHasFixedSize(true);
+        recyclerViewMovements.addItemDecoration( new DividerItemDecoration(requireContext(), LinearLayout.VERTICAL ));
+        recyclerViewMovements.setAdapter(adapterListMovements);
 
 
     }
@@ -140,13 +151,17 @@ public class MovementsFragment extends Fragment {
 
                 movementsRef.child( movements.getKey() ).removeValue();
                 adapterListMovements.notifyItemRemoved(position);
+                updateBalance();
+
             }
         });
+
         alertDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(getActivity(), "Cancelado", Toast.LENGTH_SHORT).show();
                 adapterListMovements.notifyDataSetChanged();
+
             }
         });
 
@@ -155,19 +170,28 @@ public class MovementsFragment extends Fragment {
 
     }
 
+    private void updateBalance() {
+
+        String userEmail = userAuthentication.getCurrentUser().getEmail();
+        String idUser = Base64Custom.encryptionBase64(userEmail);
+        userRef = firebaseRef.child("users").child(idUser);
+
+        if ( movements.getType().equals("revenue")) {
+            totalRevenue = totalRevenue - movements.getTransference();
+            userRef.child("revenueTotal")
+                    .setValue(totalRevenue);
+        }
+
+        if (movements.getType().equals("expense")) {
+            totalExpense = totalExpense - movements.getTransference();
+            userRef.child("expenseTotal")
+                    .setValue(totalExpense);
+
+        }
+    }
+
 
     public void getMovements() {
-
-        //setting adapter
-        adapterListMovements = new AdapterMovements(listMovements, getContext());
-
-        //setting recyclerView
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext());
-        recyclerViewMovements.setLayoutManager(layoutManager);
-        recyclerViewMovements.setHasFixedSize(true);
-        recyclerViewMovements.addItemDecoration( new DividerItemDecoration(requireContext(), LinearLayout.VERTICAL ));
-        recyclerViewMovements.setAdapter(adapterListMovements);
-
 
         String userEmail = userAuthentication.getCurrentUser().getEmail();
         String idUser = Base64Custom.encryptionBase64(userEmail);
@@ -176,13 +200,13 @@ public class MovementsFragment extends Fragment {
                 .child(idUser)
                 .child(monthYearSelected);
 
-        listMovements.clear();
         adapterListMovements.notifyDataSetChanged();
 
         valueEventListenerMovements = movementsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                listMovements.clear();
                 for (DataSnapshot data: dataSnapshot.getChildren()){
 
                     Movements movements = data.getValue(Movements.class);
@@ -232,6 +256,7 @@ public class MovementsFragment extends Fragment {
     }
 
     private void configCalendarView() {
+
         CharSequence meses[] = { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
         calendarView.setTitleMonths(meses);
 
@@ -255,21 +280,16 @@ public class MovementsFragment extends Fragment {
     public void onStart() {
         super.onStart();
         retrieveBalance();
+        getMovements();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        getMovements();
-        swipe();
-    }
 
     @Override
     public void onStop() {
         super.onStop();
         userRef.removeEventListener(valueEventListenerUser);
         movementsRef.removeEventListener(valueEventListenerMovements);
-        Log.i("onStop", "event was removed");
+       // Log.i("onStop", "event was removed");
     }
 
     @Override

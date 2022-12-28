@@ -28,7 +28,7 @@
             android:id="@+id/textView_revenueBalance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="E€ 0"
+            android:text=" 0 €"
             android:textSize="24sp"
             android:textAlignment="center"
             android:textColor="@color/white" />
@@ -41,11 +41,8 @@
             android:textSize="14sp"
             android:textAlignment="center"
             android:textColor="@color/white" />
-
-
-
-
     </LinearLayout>
+
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/calendarView_revenueCalender"
         android:layout_width="match_parent"
