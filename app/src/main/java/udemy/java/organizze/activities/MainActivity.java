@@ -1,5 +1,6 @@
 package udemy.java.organizze.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+
 
 import udemy.java.organizze.R;
 import udemy.java.organizze.config.ConfigurationFirebase;
@@ -79,12 +81,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menu_logOut:
+        int itemId = item.getItemId();
+
+        if ( itemId == R.id.menu_logOut ) {
                 userAuthentication = ConfigurationFirebase.getUserAuthentication();
                 userAuthentication.signOut();
                 startActivity(new Intent(this, MenuActivity.class));
-                break;
+
+              return true;
         }
 
         return super.onOptionsItemSelected(item);

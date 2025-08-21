@@ -74,6 +74,7 @@ public class MovementsFragment extends Fragment {
 
     }
 
+    @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -219,7 +220,7 @@ public class MovementsFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // TODO document why this method is empty
             }
         });
     }
@@ -250,7 +251,7 @@ public class MovementsFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // TODO document why this method is empty
             }
         });
     }
