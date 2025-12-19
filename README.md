@@ -1,13 +1,11 @@
-# 💰 Organizze Clone (Android)
+# 💰 Organizze Clone
 
-![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white)
+
 ![Android Studio](https://img.shields.io/badge/Android%20Studio-3DDC84?logo=android-studio&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-007396?logo=openjdk&logoColor=white)
 ![Gradle](https://img.shields.io/badge/Gradle-02303A?logo=gradle&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?logo=firebase&logoColor=black)
 ![Navigation](https://img.shields.io/badge/AndroidX%20Navigation-4285F4?logo=android&logoColor=white)
-![View%20Binding](https://img.shields.io/badge/View%20Binding-34A853?logo=android&logoColor=white)
-![clans%2Ffab](https://img.shields.io/badge/com.github.clans%3Afab-000000?logo=github&logoColor=white)
 
 A simple personal finance manager app inspired by Organizze. It uses Firebase for authentication and data storage, AndroidX for modern UI components, and is built with Java.
 
